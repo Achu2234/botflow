@@ -1,9 +1,9 @@
-name: Tortk Flow
+name: 720p
 
 on:
   push:
     paths:
-      - 'Records/TortkFlow.txt'
+      - 'Records/720p.txt'
   workflow_dispatch:
 
 jobs:
@@ -20,7 +20,7 @@ jobs:
            git config --global user.name ${{ secrets.GH_NAME }}
            git config --global user.email ${{ secrets.GH_MAIL }}
            git config --global credential.helper store
-           echo "https://filteradmin:${{ secrets.github.token }}@github.com" > ~/.git-credentials
+           echo "https://Idkhowami:${{ secrets.github.token }}@github.com" > ~/.git-credentials
 #############################################################################################
        - name: Apt Update packages and Upgrade them.
          run: |
@@ -40,14 +40,14 @@ jobs:
          timeout-minutes: 340
          continue-on-error: true
          run: |
-           parallel -u ::: 'sudo bash cleanup.sh' 'git clone https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@github.com/${{ secrets.GIT_NAME }}/TorToolkitX.git ttk && cd ttk && sudo docker build . -t ttk && sudo docker run ttk'
+           parallel -u ::: 'sudo bash cleanup.sh' 'git clone -b 720p https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@github.com/${{ secrets.GIT_NAME }}/AutoAnimeBot.git bot && cd bot && sudo docker build . -t bot && sudo docker run bot'
 #############################################################################################
        - name: Send Record to Github
          continue-on-error: true
          run: |
               git clone https://${{ secrets.GH_TOKEN }}@github.com/${GITHUB_REPOSITORY} botflow
               cd botflow || exit 1
-              echo $(TZ='${{ secrets.TZ }}' date) >> Records/TortkFlow.txt
-              git add Records/TortkFlow.txt
+              echo $(TZ='${{ secrets.TZ }}' date) >> Records/720p.txt
+              git add Records/720p.txt
               git commit -m "Workflow : add recorded loop to logs $(TZ='${{ secrets.TZ }}' date)"
               git push -q https://${{ secrets.GH_TOKEN }}@github.com/${GITHUB_REPOSITORY} HEAD:master
