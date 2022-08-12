@@ -1,0 +1,5 @@
+{
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow.json": "file:///c%3A/Users/Amirul%20Islam/Documents/GitHub/ultroid-on-GH-Actions/.github/workflows/deploy.yml"
+    }
+}
