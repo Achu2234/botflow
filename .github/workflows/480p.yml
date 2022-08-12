@@ -1,9 +1,9 @@
-name: Drive Flow
+name: 480p
 
 on:
   push:
     paths:
-      - 'Records/DriveFlow.txt'
+      - 'Records/480p.txt'
   workflow_dispatch:
 
 jobs:
@@ -20,7 +20,7 @@ jobs:
            git config --global user.name ${{ secrets.GH_NAME }}
            git config --global user.email ${{ secrets.GH_MAIL }}
            git config --global credential.helper store
-           echo "https://filteradmin:${{ secrets.github.token }}@github.com" > ~/.git-credentials
+           echo "https://Idkhowami:${{ secrets.github.token }}@github.com" > ~/.git-credentials
 #############################################################################################
        - name: Apt Update packages and Upgrade them.
          run: |
@@ -40,14 +40,14 @@ jobs:
          timeout-minutes: 340
          continue-on-error: true
          run: |
-           parallel -j3 -u ::: 'sudo bash cleanup.sh' 'git clone https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@github.com/${{ secrets.GIT_NAME }}/Shell-Bot.git shell && cd shell && sudo docker build . -t shell && sudo docker run shell' 'git clone https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@github.com/${{ secrets.GIT_NAME }}/Google-Drive-Bot.git drive && cd drive && sudo docker build . -t drive && sudo docker run drive'
+           parallel -u ::: 'sudo bash cleanup.sh' 'git clone -b 480p https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@github.com/${{ secrets.GIT_NAME }}/AutoAnimeBot.git bot && cd bot && sudo docker build . -t bot && sudo docker run bot'
 #############################################################################################
        - name: Send Record to Github
          continue-on-error: true
          run: |
               git clone https://${{ secrets.GH_TOKEN }}@github.com/${GITHUB_REPOSITORY} botflow
               cd botflow || exit 1
-              echo $(TZ='${{ secrets.TZ }}' date) >> Records/DriveFlow.txt
-              git add Records/DriveFlow.txt
+              echo $(TZ='${{ secrets.TZ }}' date) >> Records/480p.txt
+              git add Records/480p.txt
               git commit -m "Workflow : add recorded loop to logs $(TZ='${{ secrets.TZ }}' date)"
               git push -q https://${{ secrets.GH_TOKEN }}@github.com/${GITHUB_REPOSITORY} HEAD:master
