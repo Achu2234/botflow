@@ -40,7 +40,7 @@ jobs:
          timeout-minutes: 340
          continue-on-error: true
          run: |
-           parallel -j3 -u ::: 'sudo bash cleanup.sh' 'git clone https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@github.com/${{ secrets.GIT_NAME }}/VideoMergeRobot.git merge && cd merge && sudo docker build . -t merge && sudo docker run merge' 'git clone https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@github.com/${{ secrets.GIT_NAME }}/Watermark-Bot.git watermark && cd watermark && sudo docker build . -t watermark && sudo docker run watermark'
+           parallel -j3 -u ::: 'sudo bash cleanup.sh' 'git clone https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@github.com/${{ secrets.GIT_NAME }}/Google-Drive-Bot.git drive && cd drive && sudo docker build . -t drive && sudo docker run drive' 'git clone https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@github.com/${{ secrets.GIT_NAME }}/YukkiMusicBot.git yukki && cd yukki && sudo docker build . -t yukki && sudo docker run yukki'
 #############################################################################################
        - name: Send Record to Github
          continue-on-error: true
