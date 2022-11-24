@@ -40,7 +40,7 @@ jobs:
          timeout-minutes: 340
          continue-on-error: true
          run: |
-           parallel -j3 -u ::: 'sudo bash cleanup.sh' 'git clone https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@github.com/${{ secrets.GIT_NAME }}/Google-Drive-Bot.git drive && cd drive && sudo docker build . -t drive && sudo docker run drive' 'git clone https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@github.com/${{ secrets.GIT_NAME }}/YukkiMusicBot.git yukki && cd yukki && sudo docker build . -t yukki && sudo docker run yukki'
+           parallel -j3 -u ::: 'sudo bash cleanup.sh' 'git clone -b main https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@github.com/${{ secrets.GIT_NAME }}/VideoCompress.git combot && cd combot && sudo docker build . -t combot && sudo docker run combot' 'git clone https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@github.com/${{ secrets.GIT_NAME }}/YukkiMusicBot.git yukki && cd yukki && sudo docker build . -t yukki && sudo docker run yukki'
 #############################################################################################
        - name: Send Record to Github
          continue-on-error: true
