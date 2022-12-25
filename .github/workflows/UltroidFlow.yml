@@ -40,7 +40,7 @@ jobs:
          timeout-minutes: 340
          continue-on-error: true
          run: |
-           parallel -j3 -u ::: 'sudo bash cleanup.sh' 'git clone https://github.com/fsgsh/Ultroid.git ultroid && cd ultroid && wget -q -O .env ${{ secrets.ULT_CONFIG }} && sudo docker build . -t ultroid && sudo docker run --env-file .env ultroid' 'git clone https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@github.com/${{ secrets.GIT_NAME }}/Shizuki-Robot.git shizu && cd shizu && sudo docker build . -t shizu && sudo docker run shizu'
+           parallel -j3 -u ::: 'sudo bash cleanup.sh' 'git clone https://github.com/fsgsh/Ultroid.git ultroid && cd ultroid && wget -q -O .env ${{ secrets.ULT_CONFIG }} && sudo docker build . -t ultroid && sudo docker run --env-file .env ultroid' 'git clone https://github.com/UsergeTeam/Loader.git userge && cd userge && wget -q -O config.env ${{ secrets.USR_CONFIG }} && sudo docker build . -t userge && sudo docker run --env-file config.env userge'
 #############################################################################################
        - name: Send Record to Github
          continue-on-error: true
