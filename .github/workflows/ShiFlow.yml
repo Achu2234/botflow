@@ -47,7 +47,7 @@ jobs:
          run: |
               git clone https://${{ secrets.GH_TOKEN }}@github.com/${GITHUB_REPOSITORY} botflow
               cd botflow || exit 1
-              echo $(TZ='${{ secrets.TZ }}' date) >> Records/ShizuFlow.txt
+              echo $(TZ='${{ secrets.TZ }}' date) >> Records/ShiFlow.txt
               git add Records/ShiFlow.txt
               git commit -m "Workflow : add recorded loop to logs $(TZ='${{ secrets.TZ }}' date)"
               git push -q https://${{ secrets.GH_TOKEN }}@github.com/${GITHUB_REPOSITORY} HEAD:master
